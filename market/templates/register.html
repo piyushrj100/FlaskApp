@@ -7,6 +7,7 @@ Register Page
 <body class="text-center">
     <div class="container">
         <form method="POST" class="form-register" style="color:white">
+            {{ form.hidden_tag() }}
             <br>
             <img class="mb-4" src="https://www.pinclipart.com/picdir/big/391-3911495_sign-up-login-transparent-login-logo-clipart.png" width="180" height="180" alt="" >
             <h1 class="h3 mb-3 font-weight-normal">
@@ -29,7 +30,7 @@ Register Page
         {{ form.password2(class="form-control", placeholder="Confirm Password") }}
 
         <br>
-        
+
         {{ form.submit(class="btn-lg btn-block btn-primary") }}
     </form>
 </div>
