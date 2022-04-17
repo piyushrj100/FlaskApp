@@ -38,14 +38,14 @@ def register_page():
 def login_page() :
     form=LoginForm()
     if form.validate_on_submit() :
-        attempted_user=User.query.get(form.username.data).first()
+        attempted_user=User.query.filter_by(username=form.username.data).first()
         if attempted_user and attempted_user.check_password_correction(attempted_password=form.password.data) :
             login_user(attempted_user)
             flash(f'Succees! YOu are logged in as : {attempted_user.username}',category='Success')
             return redirect(url_for('market_page'))
         else :
             flash("Username and password does not match! Please try again",category='danger')
-            
+
 
 
 
