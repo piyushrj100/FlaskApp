@@ -31,7 +31,9 @@ def market_page():
         
     if request.method=="GET" :
         items = Item.query.filter_by(owner=None)
-        return render_template('market.html', items=items,purchase_form=purchase_form)
+        owned_items = Item.query.filter_by(owner=current_user.id)
+        return render_template('market.html', items=items, purchase_form=purchase_form, owned_items=owned_items)
+
 
 @app.route('/register', methods=['GET', 'POST'])
 def register_page():
