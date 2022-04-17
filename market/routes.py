@@ -24,8 +24,12 @@ def register_page():
         email_address=form.email_address.data,
         password=form.password1.data)
 
+        login_user(user_to_create)
+        flash(f'Account created successfully! You are now logged in as {user_to_create.username}',category='success')
+        return redirect(url_for('market_page'))
         db.session.add(user_to_create)
         db.session.commit()
+
         return redirect(url_for('market_page'))
 
     if form.errors != {} : #If no errors from form validation
